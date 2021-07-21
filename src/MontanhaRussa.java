@@ -127,27 +127,40 @@ public class MontanhaRussa {
 
         long finalTime = System.currentTimeMillis();
 
-        generateReport(passageiros, initialTime, finalTime);
+        generateReport(passageiros, carros, initialTime, finalTime);
 
         Printer.printlnColor("FIM em: " + finalTime, PrinterColors.WHITE);
     }
 
-    private static void generateReport(ArrayList<Passenger> passageiros, long initalTime, long finaTime) {
+    private static void generateReport(
+            ArrayList<Passenger> passageiros,
+            ArrayList<Car> carros,
+            long initalTime,
+            long finaTime
+    ) {
         long[] passageirosTimes = passageiros.stream().mapToLong(
                 passenger -> passenger.getOutQueueTimestamp() - passenger.getInQueueTimestamp()
         ).toArray();
 
+        long movingTime = carros.stream().mapToLong(Car::getTotalTimeInRoad).sum();
+
         long totalAppTime = finaTime - initalTime;
+
+        double usageTime = (double) movingTime / (double) totalAppTime;
 
         long minTime = Arrays.stream(passageirosTimes).min().getAsLong();
         long maxTime = Arrays.stream(passageirosTimes).max().getAsLong();
         double avaregeTime = Arrays.stream(passageirosTimes).average().getAsDouble();
 
-        Printer.printlnColor("Tempo Total App: " + totalAppTime + " ms.", PrinterColors.PURPLE);
-
-        Printer.printlnColor("Menor tempo na fila: " + minTime + " ms.", PrinterColors.PURPLE);
-        Printer.printlnColor("Maior tempo na fila: " + maxTime + " ms.", PrinterColors.PURPLE);
-        Printer.printlnColor("Média tempo na fila: " + avaregeTime + " ms.", PrinterColors.PURPLE);
+        System.out.println();
+        Printer.printlnColor("=============== Relatório ===============", PrinterColors.PURPLE);
+        Printer.printlnColor("Tempo Total App: " + totalAppTime + " ms", PrinterColors.PURPLE);
+        Printer.printlnColor("Menor tempo de um passageiro na fila: " + minTime + " ms", PrinterColors.PURPLE);
+        Printer.printlnColor("Maior tempo de um passageiro na fila: " + maxTime + " ms", PrinterColors.PURPLE);
+        Printer.printlnColor("Média tempo de um passageiro na fila: " + avaregeTime + " ms", PrinterColors.PURPLE);
+        Printer.printlnColor("Tempo de movimentação do(s) carro(s): " + movingTime + " ms", PrinterColors.PURPLE);
+        Printer.printlnColor("Utilização do(s) carro(s): " + usageTime, PrinterColors.PURPLE);
+        Printer.printlnColor("============== Fim Relaório ==============", PrinterColors.PURPLE);
     }
 
     private static String lerArquivo(File file) {

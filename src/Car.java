@@ -4,27 +4,32 @@ class Car extends Thread {
     private final int id;
     private final ArrayList<Passenger> passengers;
     private final MontanhaRussa montanhaRussa;
+    private long totalTimeInRoad;
 
     public Car(int id, MontanhaRussa montanhaRussa) {
         this.id = id;
         this.passengers = new ArrayList<>();
         this.montanhaRussa = montanhaRussa;
+        this.totalTimeInRoad = 0;
+    }
+
+    public void plusTotalTimeInRoad(long time) {
+        this.totalTimeInRoad += time;
     }
 
     public void run() {
         while (true) {
-            this.boardPassengers();
+            this.tryBoardPassengers();
             if (this.passengers.size() == this.montanhaRussa.getC()) {
                 ride();
             }
-            // condição de parada
             if (this.montanhaRussa.isEnd()) {
                 return;
             }
         }
     }
 
-    private void boardPassengers() {
+    private void tryBoardPassengers() {
         try {
             this.montanhaRussa.getHeadPassengerQueueSemaphore().acquire();
             if (!montanhaRussa.getPassengerQueue().isEmpty()
@@ -50,11 +55,15 @@ class Car extends Thread {
     }
 
     private void ride() {
+        long initalRideTime, finalRidetime;
         try {
             this.montanhaRussa.getRidingSemaphore().acquire();
-            Printer.printlnColor(this + "=> Dirigindo em: " + System.currentTimeMillis(), PrinterColors.RED);
+            initalRideTime = System.currentTimeMillis();
+            Printer.printlnColor(this + "=> Dirigindo em: " + initalRideTime, PrinterColors.RED);
             Thread.sleep((long) montanhaRussa.getTM() * 1000);
-            Printer.printlnColor(this + "=> Voltou em: " + System.currentTimeMillis(), PrinterColors.RED);
+            finalRidetime = System.currentTimeMillis();
+            Printer.printlnColor(this + "=> Voltou em: " + finalRidetime, PrinterColors.RED);
+            plusTotalTimeInRoad(finalRidetime - initalRideTime);
             unBoardPassengers();
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -78,6 +87,10 @@ class Car extends Thread {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public long getTotalTimeInRoad() {
+        return totalTimeInRoad;
     }
 
     @Override

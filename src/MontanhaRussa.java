@@ -3,10 +3,10 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.concurrent.Semaphore;
-import java.util.stream.LongStream;
 
 public class MontanhaRussa {
     private final int N; // Número de passageiros
@@ -110,6 +110,8 @@ public class MontanhaRussa {
             carros.add(new Car(i, montanhaRussa));
         }
 
+        long initialTime = System.currentTimeMillis();
+
         Printer.printlnColor("Start Threads dos Passageiros em: " + System.currentTimeMillis(), PrinterColors.WHITE);
         passageiros.forEach(Thread::start);
 
@@ -123,13 +125,29 @@ public class MontanhaRussa {
             e.printStackTrace();
         }
 
-        LongStream passageirosTimes = passageiros.stream().mapToLong(
+        long finalTime = System.currentTimeMillis();
+
+        generateReport(passageiros, initialTime, finalTime);
+
+        Printer.printlnColor("FIM em: " + finalTime, PrinterColors.WHITE);
+    }
+
+    private static void generateReport(ArrayList<Passenger> passageiros, long initalTime, long finaTime) {
+        long[] passageirosTimes = passageiros.stream().mapToLong(
                 passenger -> passenger.getOutQueueTimestamp() - passenger.getInQueueTimestamp()
-        );
+        ).toArray();
 
-        passageirosTimes.forEach(System.out::println);
+        long totalAppTime = finaTime - initalTime;
 
-        Printer.printlnColor("FIM em: " + System.currentTimeMillis(), PrinterColors.WHITE);
+        long minTime = Arrays.stream(passageirosTimes).min().getAsLong();
+        long maxTime = Arrays.stream(passageirosTimes).max().getAsLong();
+        double avaregeTime = Arrays.stream(passageirosTimes).average().getAsDouble();
+
+        Printer.printlnColor("Tempo Total App: " + totalAppTime + " ms.", PrinterColors.PURPLE);
+
+        Printer.printlnColor("Menor tempo na fila: " + minTime + " ms.", PrinterColors.PURPLE);
+        Printer.printlnColor("Maior tempo na fila: " + maxTime + " ms.", PrinterColors.PURPLE);
+        Printer.printlnColor("Média tempo na fila: " + avaregeTime + " ms.", PrinterColors.PURPLE);
     }
 
     private static String lerArquivo(File file) {

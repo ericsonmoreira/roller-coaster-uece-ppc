@@ -10,8 +10,8 @@ public class Passenger implements Runnable {
 
     public void run() {
         try {
-            Thread.sleep(montanhaRussa.getTP());
             this.montanhaRussa.getDoorPassengerQueueSemaphore().acquire();
+            Thread.sleep(montanhaRussa.getTP());
             this.montanhaRussa.getPassengerQueue().add(this);
             Printer.printlnColor(this + "=> Entrou na fila: " + System.currentTimeMillis(), PrinterColors.YELLOW);
         } catch (InterruptedException e) {

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.concurrent.Semaphore;
+import java.util.stream.LongStream;
 
 public class MontanhaRussa {
     private final int N; // Número de passageiros
@@ -94,19 +95,19 @@ public class MontanhaRussa {
 
         MontanhaRussa montanhaRussa = generateMontanhaRussa(params);
 
-        ArrayList<Thread> passageiros = new ArrayList<>();
-        ArrayList<Thread> carros = new ArrayList<>();
+        ArrayList<Passenger> passageiros = new ArrayList<>();
+        ArrayList<Car> carros = new ArrayList<>();
 
         Printer.printlnColor("Iniciando em: " + System.currentTimeMillis(), PrinterColors.WHITE);
 
         Printer.printlnColor("Criando Threads dos Passageiros", PrinterColors.WHITE);
         for (int i = 0; i < montanhaRussa.getN(); i++) {
-            passageiros.add(new Thread(new Passenger(i, montanhaRussa)));
+            passageiros.add(new Passenger(i, montanhaRussa));
         }
 
         Printer.printlnColor("Criando Threads dos Carros em: " + System.currentTimeMillis(), PrinterColors.WHITE);
         for (int i = 0; i < montanhaRussa.getM(); i++) {
-            carros.add(new Thread(new Car(i, montanhaRussa)));
+            carros.add(new Car(i, montanhaRussa));
         }
 
         Printer.printlnColor("Start Threads dos Passageiros em: " + System.currentTimeMillis(), PrinterColors.WHITE);
@@ -121,6 +122,12 @@ public class MontanhaRussa {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+        LongStream passageirosTimes = passageiros.stream().mapToLong(
+                passenger -> passenger.getOutQueueTimestamp() - passenger.getInQueueTimestamp()
+        );
+
+        passageirosTimes.forEach(System.out::println);
 
         Printer.printlnColor("FIM em: " + System.currentTimeMillis(), PrinterColors.WHITE);
     }
@@ -139,8 +146,8 @@ public class MontanhaRussa {
         return texto;
     }
 
-    private static MontanhaRussa generateMontanhaRussa(String s){
-        String[] params = s.split( " ");
+    private static MontanhaRussa generateMontanhaRussa(String s) {
+        String[] params = s.split(" ");
         int N = Integer.parseInt(params[0]);
         int M = Integer.parseInt(params[1]);
         int C = Integer.parseInt(params[2]);
@@ -150,5 +157,4 @@ public class MontanhaRussa {
         int TP_MAX = Integer.parseInt(params[6]);
         return new MontanhaRussa(N, M, C, TE, TM, TP_MIN, TP_MAX);
     }
-
 }

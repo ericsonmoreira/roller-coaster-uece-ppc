@@ -1,10 +1,8 @@
 import java.util.ArrayList;
 
-class Car implements Runnable {
+class Car extends Thread {
     private final int id;
-
     private final ArrayList<Passenger> passengers;
-
     private final MontanhaRussa montanhaRussa;
 
     public Car(int id, MontanhaRussa montanhaRussa) {
@@ -36,6 +34,7 @@ class Car implements Runnable {
                 long boardPassengerCurrentTimeMillis = System.currentTimeMillis();
                 for (int i = 0; i < montanhaRussa.getC(); i++) {
                     Passenger passenger = montanhaRussa.getPassengerQueue().poll();
+                    passenger.setOutQueueTimestamp(boardPassengerCurrentTimeMillis);
                     Printer.printlnColor(
                             passenger + "=> Embarcou no carro: " + this + " em: " + boardPassengerCurrentTimeMillis,
                             PrinterColors.GREEN

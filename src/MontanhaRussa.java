@@ -8,16 +8,20 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.concurrent.Semaphore;
 
+/**
+ * @author Ericson Rogerio Moreira
+ * @version 1.0.0
+ */
 public class MontanhaRussa {
     private final int N; // Número de passageiros
     private final int M; // Número de carros
     private final int C; // Número bancos em um carro
-    private final int TE; // Tempo de embarque de um passageiro no carro
+    private final int TE; // Tempo de embarque e desembarque em um carro
     private final int TM; // Tempo que um carro leva para dar uma volta
     private final int TP_MIN; // Tempo mínimo de chegada dos passageiros à montanha russa
     private final int TP_MAX; // Tempo máximo de chegada dos passageiros à montanha russa
 
-    private final Semaphore ridingSemaphore; // Semaphore para bloquear o carro que pode estar rodando
+    private final Semaphore ridingSemaphore; // Semaphore para bloquear enquanto um carro está dirigindo
     private final Semaphore doorPassengerQueueSemaphore; // Semaphore que controla a entrada de passageiros na fila
     private final Semaphore headPassengerQueueSemaphore; // Semaphore que controla a saída de passageiros na fila
 
@@ -98,7 +102,11 @@ public class MontanhaRussa {
         ArrayList<Passenger> passageiros = new ArrayList<>();
         ArrayList<Car> carros = new ArrayList<>();
 
-        Printer.printlnColor("Iniciando em: " + System.currentTimeMillis(), PrinterColors.WHITE);
+        long initialTime = System.currentTimeMillis();
+
+        Printer.printlnColor("Iniciando em: " + initialTime, PrinterColors.WHITE);
+
+        Printer.printlnColor(montanhaRussa.toString(), PrinterColors.PURPLE);
 
         Printer.printlnColor("Criando Threads dos Passageiros", PrinterColors.WHITE);
         for (int i = 0; i < montanhaRussa.getN(); i++) {
@@ -109,8 +117,6 @@ public class MontanhaRussa {
         for (int i = 0; i < montanhaRussa.getM(); i++) {
             carros.add(new Car(i, montanhaRussa));
         }
-
-        long initialTime = System.currentTimeMillis();
 
         Printer.printlnColor("Start Threads dos Passageiros em: " + System.currentTimeMillis(), PrinterColors.WHITE);
         passageiros.forEach(Thread::start);
@@ -187,5 +193,18 @@ public class MontanhaRussa {
         int TP_MIN = Integer.parseInt(params[5]);
         int TP_MAX = Integer.parseInt(params[6]);
         return new MontanhaRussa(N, M, C, TE, TM, TP_MIN, TP_MAX);
+    }
+
+    @Override
+    public String toString() {
+        return "MontanhaRussa{" +
+                "N=" + N +
+                ", M=" + M +
+                ", C=" + C +
+                ", TE=" + TE +
+                ", TM=" + TM +
+                ", TP_MIN=" + TP_MIN +
+                ", TP_MAX=" + TP_MAX +
+                '}';
     }
 }

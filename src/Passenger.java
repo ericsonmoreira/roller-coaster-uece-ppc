@@ -16,6 +16,7 @@ public class Passenger extends Thread {
             this.montanhaRussa.getDoorPassengerQueueSemaphore().acquire();
             Thread.sleep(montanhaRussa.getTP());
             this.inQueueTimestamp = System.currentTimeMillis();
+            this.setInQueueTimestamp(inQueueTimestamp);
             this.montanhaRussa.getPassengerQueue().add(this);
             Printer.printlnColor(this + "=> Entrou na fila: " + this.inQueueTimestamp, PrinterColors.YELLOW);
         } catch (InterruptedException e) {

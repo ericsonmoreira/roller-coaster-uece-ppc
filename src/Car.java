@@ -11,6 +11,7 @@ class Car extends Thread {
         this.passengers = new ArrayList<>();
         this.montanhaRussa = montanhaRussa;
         this.totalTimeInRoad = 0;
+        this.start();
     }
 
     public void plusTotalTimeInRoad(long time) {
@@ -41,7 +42,7 @@ class Car extends Thread {
                     Passenger passenger = montanhaRussa.getPassengerQueue().poll();
                     passenger.setOutQueueTimestamp(boardPassengerCurrentTimeMillis);
                     Printer.printlnColor(
-                            passenger + "=> Embarcou no carro: " + this + " em: " + boardPassengerCurrentTimeMillis,
+                            passenger + " => Embarcou no carro: " + this + " em: " + boardPassengerCurrentTimeMillis,
                             PrinterColors.GREEN
                     );
                     this.passengers.add(passenger);
@@ -59,10 +60,10 @@ class Car extends Thread {
         try {
             this.montanhaRussa.getRidingSemaphore().acquire();
             initalRideTime = System.currentTimeMillis();
-            Printer.printlnColor(this + "=> Dirigindo em: " + initalRideTime, PrinterColors.RED);
+            Printer.printlnColor(this + " => Dirigindo em: " + initalRideTime, PrinterColors.RED);
             Thread.sleep((long) montanhaRussa.getTM() * 1000);
             finalRidetime = System.currentTimeMillis();
-            Printer.printlnColor(this + "=> Voltou em: " + finalRidetime, PrinterColors.RED);
+            Printer.printlnColor(this + " => Voltou em: " + finalRidetime, PrinterColors.RED);
             plusTotalTimeInRoad(finalRidetime - initalRideTime);
             unBoardPassengers();
         } catch (InterruptedException e) {
@@ -78,7 +79,7 @@ class Car extends Thread {
             long unBoardPassengerCurrentTimeMillis = System.currentTimeMillis();
             for (Passenger passenger : this.passengers) {
                 Printer.printlnColor(
-                        passenger + "=> Desembarcou no carro: " + this + " em: " + unBoardPassengerCurrentTimeMillis,
+                        passenger + " => Desembarcou no carro: " + this + " em: " + unBoardPassengerCurrentTimeMillis,
                         PrinterColors.GREEN
                 );
             }

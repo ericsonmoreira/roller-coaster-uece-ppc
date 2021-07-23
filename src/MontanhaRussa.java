@@ -118,12 +118,6 @@ public class MontanhaRussa {
             carros.add(new Car(i, montanhaRussa));
         }
 
-        Printer.printlnColor("Start Threads dos Passageiros em: " + System.currentTimeMillis(), PrinterColors.WHITE);
-        passageiros.forEach(Thread::start);
-
-        Printer.printlnColor("Start Threads dos Carros em: " + System.currentTimeMillis(), PrinterColors.WHITE);
-        carros.forEach(Thread::start);
-
         try {
             for (Thread passageirosThread : passageiros) passageirosThread.join();
             for (Thread carrosThread : carros) carrosThread.join();

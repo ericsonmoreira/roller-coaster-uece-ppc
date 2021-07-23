@@ -9,6 +9,7 @@ public class Passenger extends Thread {
         this.montanhaRussa = montanhaRussa;
         this.inQueueTimestamp = 0;
         this.outQueueTimestamp = 0;
+        this.start();
     }
 
     public void run() {
@@ -18,7 +19,7 @@ public class Passenger extends Thread {
             this.inQueueTimestamp = System.currentTimeMillis();
             this.setInQueueTimestamp(inQueueTimestamp);
             this.montanhaRussa.getPassengerQueue().add(this);
-            Printer.printlnColor(this + "=> Entrou na fila: " + this.inQueueTimestamp, PrinterColors.YELLOW);
+            Printer.printlnColor(this + " => Entrou na fila: " + this.inQueueTimestamp, PrinterColors.YELLOW);
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {

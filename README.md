@@ -1,6 +1,8 @@
 # Problema da Montanha Russa
 
 <img alt="License" src="https://img.shields.io/static/v1?label=license&message=MIT&color=E51C44&labelColor=0A1033">
+<img alt="License" src="https://img.shields.io/static/v1?label=java&message=1.8&color=E51C44&labelColor=0A1033">
+
 
 ![cover](.github/roller-coaster.jpg?style=flat)
 

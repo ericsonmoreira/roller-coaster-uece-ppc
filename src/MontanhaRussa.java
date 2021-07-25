@@ -22,7 +22,7 @@ public class MontanhaRussa {
     private final int TP_MAX; // Tempo máximo de chegada dos passageiros à montanha russa
 
     private final Semaphore ridingSemaphore; // Semaphore para bloquear enquanto um carro está dirigindo
-    private final Semaphore doorPassengerQueueSemaphore; // Semaphore que controla a entrada de passageiros na fila
+    // private final Semaphore doorPassengerQueueSemaphore; // Semaphore que controla a entrada de passageiros na fila
     private final Semaphore headPassengerQueueSemaphore; // Semaphore que controla a saída de passageiros na fila
 
     private final Queue<Passenger> passengerQueue;
@@ -38,7 +38,6 @@ public class MontanhaRussa {
         this.TP_MIN = TP_MIN;
         this.TP_MAX = TP_MAX;
         this.ridingSemaphore = new Semaphore(1);
-        this.doorPassengerQueueSemaphore = new Semaphore(1);
         this.headPassengerQueueSemaphore = new Semaphore(1);
         this.passengerQueue = new LinkedList<>();
         this.happyPassengersCount = 0;
@@ -77,10 +76,6 @@ public class MontanhaRussa {
         return ridingSemaphore;
     }
 
-    public Semaphore getDoorPassengerQueueSemaphore() {
-        return doorPassengerQueueSemaphore;
-    }
-
     public Semaphore getHeadPassengerQueueSemaphore() {
         return headPassengerQueueSemaphore;
     }
@@ -117,6 +112,12 @@ public class MontanhaRussa {
         for (int i = 0; i < montanhaRussa.getM(); i++) {
             carros.add(new Car(i, montanhaRussa));
         }
+
+        Printer.printlnColor("Start Threads dos Passageiros em: " + System.currentTimeMillis(), PrinterColors.WHITE);
+        passageiros.forEach(Thread::start);
+
+        Printer.printlnColor("Start Threads dos Carros em: " + System.currentTimeMillis(), PrinterColors.WHITE);
+        carros.forEach(Thread::start);
 
         try {
             for (Thread passageirosThread : passageiros) passageirosThread.join();

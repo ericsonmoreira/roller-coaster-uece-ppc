@@ -11,7 +11,6 @@ class Car extends Thread {
         this.passengers = new ArrayList<>();
         this.montanhaRussa = montanhaRussa;
         this.totalTimeInRoad = 0;
-        this.start();
     }
 
     public void plusTotalTimeInRoad(long time) {
@@ -22,7 +21,7 @@ class Car extends Thread {
         while (true) {
             this.tryBoardPassengers();
             if (this.passengers.size() == this.montanhaRussa.getC()) {
-                ride();
+                toDrive();
             }
             if (this.montanhaRussa.isEnd()) {
                 return;
@@ -55,7 +54,7 @@ class Car extends Thread {
         }
     }
 
-    private void ride() {
+    private void toDrive() {
         long initalRideTime, finalRidetime;
         try {
             this.montanhaRussa.getRidingSemaphore().acquire();

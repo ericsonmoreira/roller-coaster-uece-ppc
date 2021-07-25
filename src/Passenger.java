@@ -9,21 +9,23 @@ public class Passenger extends Thread {
         this.montanhaRussa = montanhaRussa;
         this.inQueueTimestamp = 0;
         this.outQueueTimestamp = 0;
-        this.start();
     }
 
     public void run() {
         try {
-            this.montanhaRussa.getDoorPassengerQueueSemaphore().acquire();
+            getInPassagersQueue();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void getInPassagersQueue() throws InterruptedException {
+        synchronized (this.montanhaRussa.getPassengerQueue()) {
             Thread.sleep(montanhaRussa.getTP());
             this.inQueueTimestamp = System.currentTimeMillis();
             this.setInQueueTimestamp(inQueueTimestamp);
             this.montanhaRussa.getPassengerQueue().add(this);
             Printer.printlnColor(this + " => Entrou na fila: " + this.inQueueTimestamp, PrinterColors.YELLOW);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } finally {
-            this.montanhaRussa.getDoorPassengerQueueSemaphore().release();
         }
     }
 

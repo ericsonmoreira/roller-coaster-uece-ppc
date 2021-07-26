@@ -22,7 +22,7 @@ public class MontanhaRussa {
     private final int TP_MAX; // Tempo máximo de chegada dos passageiros à montanha russa
 
     private final Semaphore ridingSemaphore; // Semaphore para bloquear enquanto um carro está dirigindo
-    // private final Semaphore doorPassengerQueueSemaphore; // Semaphore que controla a entrada de passageiros na fila
+
     private final Semaphore headPassengerQueueSemaphore; // Semaphore que controla a saída de passageiros na fila
 
     private final Queue<Passenger> passengerQueue;

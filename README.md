@@ -30,9 +30,10 @@ Desenvolver um algoritmo concorrente e códigos para a montanha russa, o carro e
 para sincronizá-los usando exclusão mútua com espera bloqueada. Pense em escrever o código genérico, prevendo os demais
 casos.
 
-## Descrição dos algoritmos
+## Implementação
 
-## Descrição da Implementação
+O projeto foi desenvolvido utilizando a linguagem de programação Java em sua versão 1.8 e como ambiente de
+desenvolvimento o [IntelliJ IDEA](https://www.jetbrains.com/pt-br/idea/).
 
 Diagrama de classes:
 
@@ -59,7 +60,7 @@ User reference [Montanha Russa][1]
 
 ## Como testar
 
-Siga os seguintes passos para testar o projeto: 
+Siga os seguintes passos para testar o projeto:
 
 ```shell
 # download do projeto
@@ -89,7 +90,7 @@ Onde:
 - **N:** Número de passageiros
 - **M:** Número de carros
 - **C:** Número bancos em um carro
-- **TE:** Tempo de embarque e desembarque em um carro em segundos 
+- **TE:** Tempo de embarque e desembarque em um carro em segundos
 - **TM:** Tempo que um carro leva para dar uma volta em segundos
 - **TP_MIN:** Tempo mínimo de chegada dos passageiros à montanha russa em segundos
 - **TP_MAX:** Tempo máximo de chegada dos passageiros à montanha russa em segundos

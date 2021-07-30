@@ -1,8 +1,10 @@
 # Problema da Montanha Russa
 
-<img alt="License" src="https://img.shields.io/static/v1?label=license&message=MIT&color=E51C44&labelColor=0A1033">
-<img alt="License" src="https://img.shields.io/static/v1?label=java&message=1.8&color=E51C44&labelColor=0A1033">
-
+<p align="center">
+    <img alt="Universidade" src="https://img.shields.io/static/v1?label=university&message=UECE&color=13ad47&labelColor=0A1033">
+    <img alt="License" src="https://img.shields.io/static/v1?label=license&message=MIT&color=13ad47&labelColor=0A1033">
+    <img alt="Linguagem" src="https://img.shields.io/static/v1?label=java&message=1.8&color=13ad47&labelColor=0A1033">
+</p>
 
 ![cover](.github/roller-coaster.jpg?style=flat)
 
@@ -54,6 +56,76 @@ Diagrama de classes:
 4. Código genérico, prevendo os demais casos
 
 User reference [Montanha Russa][1]
+
+## Resultados
+
+No final da execução do código deverão ser calculados:
+
+- Tempo mínimo, máximo e médio de espera dos passageiros na fila
+- Tempo de utilização do(s) carros (tempo movimentando/tempo total)
+
+### `Um carro :car:`
+
+```shell
+=============== Relatório ===============
+Tempo Total App: 163123 ms
+Menor tempo de um passageiro na fila: 1000 ms
+Maior tempo de um passageiro na fila: 72998 ms
+Média tempo de um passageiro na fila: 37423.86538461538 ms
+Tempo de movimentação do(s) carro(s): 130002 ms
+Utilização do carro: Car{id=0}: 0.7969568975558321
+Utilização do(s) carro(s): 0.7969568975558321
+============== Fim Relaório ==============
+```
+
+### `Dois carros :car: :car:`
+
+```shell
+=============== Relatório ===============
+Tempo Total App: 260120 ms
+Menor tempo de um passageiro na fila: 1000 ms
+Maior tempo de um passageiro na fila: 98982 ms
+Média tempo de um passageiro na fila: 46436.84782608696 ms
+Tempo de movimentação do(s) carro(s): 230006 ms
+Utilização do carro: Car{id=0}: 0.4613409195755805
+Utilização do carro: Car{id=1}: 0.4228894356450869
+Utilização do(s) carro(s): 0.8842303552206674
+============== Fim Relaório ==============
+```
+
+### `Três carros :car: :car: :car:`
+```shell
+=============== Relatório ===============
+Tempo Total App: 414147 ms
+Menor tempo de um passageiro na fila: 1000 ms
+Maior tempo de um passageiro na fila: 166977 ms
+Média tempo de um passageiro na fila: 75869.02027027027 ms
+Tempo de movimentação do(s) carro(s): 370009 ms
+Utilização do carro: Car{id=0}: 0.2897594332447175
+Utilização do carro: Car{id=1}: 0.2897570186431388
+Utilização do carro: Car{id=2}: 0.31390786363296125
+Utilização do(s) carro(s): 0.8934243155208175
+============== Fim Relaório ==============
+```
+
+## Arquivos
+
+<pre><font color="#BD93F9"><b>.</b></font>
+├── <font color="#BD93F9"><b>configs</b></font>
+│         ├── config01.txt
+│         ├── config02.txt
+│         ├── config03.txt
+│         └── config-teste.txt
+├── LICENSE.md
+├── README.md
+├── roller-coaster-uece-ppc.iml
+└── <font color="#BD93F9"><b>src</b></font>
+    ├── Car.java
+    ├── MontanhaRussa.java
+    ├── Passenger.java
+    ├── PrinterColors.java
+    └── Printer.java
+</pre>
 
 ## O que o relatório deve ter
 

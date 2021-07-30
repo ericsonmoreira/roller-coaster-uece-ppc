@@ -147,7 +147,7 @@ public class MontanhaRussa {
 
         long totalAppTime = finaTime - initalTime;
 
-        double usageTime = (double) movingTime / (double) totalAppTime;
+        double usageTimeTotal = (double) movingTime / (double) totalAppTime;
 
         long minTime = Arrays.stream(passageirosTimes).min().getAsLong();
         long maxTime = Arrays.stream(passageirosTimes).max().getAsLong();
@@ -160,7 +160,11 @@ public class MontanhaRussa {
         Printer.printlnColor("Maior tempo de um passageiro na fila: " + maxTime + " ms", PrinterColors.PURPLE);
         Printer.printlnColor("Média tempo de um passageiro na fila: " + avaregeTime + " ms", PrinterColors.PURPLE);
         Printer.printlnColor("Tempo de movimentação do(s) carro(s): " + movingTime + " ms", PrinterColors.PURPLE);
-        Printer.printlnColor("Utilização do(s) carro(s): " + usageTime, PrinterColors.PURPLE);
+        carros.forEach(car -> {
+            double usageTimeCar = (double) car.getTotalTimeInRoad() / (double) totalAppTime;
+            Printer.printlnColor("Utilização do carro: " + car + ": " + usageTimeCar, PrinterColors.PURPLE);
+        });
+        Printer.printlnColor("Utilização do(s) carro(s): " + usageTimeTotal, PrinterColors.PURPLE);
         Printer.printlnColor("============== Fim Relaório ==============", PrinterColors.PURPLE);
     }
 

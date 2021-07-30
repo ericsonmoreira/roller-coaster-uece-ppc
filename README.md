@@ -14,7 +14,7 @@ quando estiver cheio, parte para a viagem até retornar para pegar novos passage
 
 Para resolvê-lo deve-se usar princípios básico de **programação concorrente**.
 
-## :roller_coaster: Proposta do Problema
+## :roller_coaster: Formulação do problema
 
 O problema da Montanha Russa usa apenas três processos: a montanha russa com o processo main() os passageiros e o(s)
 carro(s).
@@ -28,6 +28,24 @@ Desenvolver um algoritmo concorrente e códigos para a montanha russa, o carro e
 para sincronizá-los usando exclusão mútua com espera bloqueada. Pense em escrever o código genérico, prevendo os demais
 casos.
 
+## Descrição dos algoritmos
+
+## Descrição da Implementação
+
+Diagrama de classes:
+
+![uml](.github/uml.svg?style=flat)
+
+### Classe [Montanha Russa][1]
+
+### Classe [Passenger][2]
+
+### Classe [Car][3]
+
+### Classe [Printer][4]
+
+### Enum [PrinterColors][5]
+
 ## :computer: Requisitos do sistema
 
 1. Algoritmo concorrente
@@ -37,10 +55,19 @@ casos.
 
 User reference [Montanha Russa][1]
 
+## O que o relatório deve ter
+
+- Formulação do problema
+- Descrição dos algoritmos
+- Descrição da Implementação (diagrama de classes)
+- Resultados
+
 [1]: src/MontanhaRussa.java
 
 [2]: src/Passenger.java
 
 [3]: src/Car.java
 
-[4]: .github/roller-coaster.jpg
+[4]: src/Printer.java
+
+[5]: src/PrinterColors.java

@@ -1,8 +1,8 @@
 public class Passenger extends Thread {
-    private final int id;
-    private final MontanhaRussa montanhaRussa;
-    private long inQueueTimestamp;
-    private long outQueueTimestamp;
+    private final int id; // id do passageiro
+    private final MontanhaRussa montanhaRussa; // instância da Montanha Russa
+    private long inQueueTimestamp; // momento em que o passageiro entrou na fila
+    private long outQueueTimestamp; // momento em que o passageiro saiu da fila
 
     public Passenger(int id, MontanhaRussa montanhaRussa) {
         this.id = id;

@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 
 class Car extends Thread {
-    private final int id;
-    private final ArrayList<Passenger> passengers;
-    private final MontanhaRussa montanhaRussa;
-    private long totalTimeInRoad;
+    private final int id; // id do carro
+    private final ArrayList<Passenger> passengers; // lista de passageiros que estão no carro
+    private final MontanhaRussa montanhaRussa; // instância da Montanha Russa
+    private long totalTimeInRoad; // tempo total do carro em movimento
 
     public Car(int id, MontanhaRussa montanhaRussa) {
         this.id = id;

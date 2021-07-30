@@ -162,9 +162,9 @@ public class MontanhaRussa {
         Printer.printlnColor("Tempo de movimentação do(s) carro(s): " + movingTime + " ms", PrinterColors.PURPLE);
         carros.forEach(car -> {
             double usageTimeCar = (double) car.getTotalTimeInRoad() / (double) totalAppTime;
-            Printer.printlnColor("Utilização do carro: " + car + ": " + usageTimeCar, PrinterColors.PURPLE);
+            Printer.printlnColor("Tempo utilização do carro: " + car + ": " + usageTimeCar, PrinterColors.PURPLE);
         });
-        Printer.printlnColor("Utilização do(s) carro(s): " + usageTimeTotal, PrinterColors.PURPLE);
+        Printer.printlnColor("Tempo utilização do(s) carro(s): " + usageTimeTotal, PrinterColors.PURPLE);
         Printer.printlnColor("============== Fim Relaório ==============", PrinterColors.PURPLE);
     }
 

@@ -59,10 +59,20 @@ User reference [Montanha Russa][1]
 
 ## Resultados
 
-No final da execução do código deverão ser calculados:
+Um dos requisitos é que no final da execução do código deverão ser calculados:
 
 - Tempo mínimo, máximo e médio de espera dos passageiros na fila
 - Tempo de utilização do(s) carros (tempo movimentando/tempo total)
+
+No final da nossa implementação são apresentados as seguintes informações:
+
+- Tempo Total App
+- Menor tempo de um passageiro na fila
+- Maior tempo de um passageiro na fila
+- Média tempo de um passageiro na fila
+- Tempo de movimentação do(s) carro(s)
+- Tempo Utilização do(s) carro(s): 0.7969568975558321
+- Tempo Utilização do(s) carro(s): 0.7969568975558321
 
 ### `Um carro :car:`
 
@@ -73,8 +83,8 @@ Menor tempo de um passageiro na fila: 1000 ms
 Maior tempo de um passageiro na fila: 72998 ms
 Média tempo de um passageiro na fila: 37423.86538461538 ms
 Tempo de movimentação do(s) carro(s): 130002 ms
-Utilização do carro: Car{id=0}: 0.7969568975558321
-Utilização do(s) carro(s): 0.7969568975558321
+Tempo utilização do carro: Car{id=0}: 0.7969568975558321
+Tempo utilização do(s) carro(s): 0.7969568975558321
 ============== Fim Relaório ==============
 ```
 
@@ -87,13 +97,14 @@ Menor tempo de um passageiro na fila: 1000 ms
 Maior tempo de um passageiro na fila: 98982 ms
 Média tempo de um passageiro na fila: 46436.84782608696 ms
 Tempo de movimentação do(s) carro(s): 230006 ms
-Utilização do carro: Car{id=0}: 0.4613409195755805
-Utilização do carro: Car{id=1}: 0.4228894356450869
-Utilização do(s) carro(s): 0.8842303552206674
+Tempo utilização do carro: Car{id=0}: 0.4613409195755805
+Tempo utilização do carro: Car{id=1}: 0.4228894356450869
+Tempo utilização do(s) carro(s): 0.8842303552206674
 ============== Fim Relaório ==============
 ```
 
 ### `Três carros :car: :car: :car:`
+
 ```shell
 =============== Relatório ===============
 Tempo Total App: 414147 ms
@@ -101,10 +112,10 @@ Menor tempo de um passageiro na fila: 1000 ms
 Maior tempo de um passageiro na fila: 166977 ms
 Média tempo de um passageiro na fila: 75869.02027027027 ms
 Tempo de movimentação do(s) carro(s): 370009 ms
-Utilização do carro: Car{id=0}: 0.2897594332447175
-Utilização do carro: Car{id=1}: 0.2897570186431388
-Utilização do carro: Car{id=2}: 0.31390786363296125
-Utilização do(s) carro(s): 0.8934243155208175
+Tempo utilização do carro: Car{id=0}: 0.2897594332447175
+Tempo utilização do carro: Car{id=1}: 0.2897570186431388
+Tempo utilização do carro: Car{id=2}: 0.31390786363296125
+Tempo utilização do(s) carro(s): 0.8934243155208175
 ============== Fim Relaório ==============
 ```
 

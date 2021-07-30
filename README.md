@@ -57,6 +57,43 @@ Diagrama de classes:
 
 User reference [Montanha Russa][1]
 
+## Como testar
+
+Siga os seguintes passos para testar o projeto: 
+
+```shell
+# download do projeto
+git clone https://github.com/ericsonmoreira/roller-coaster-uece-ppc.git
+
+# entrar na pasta
+cd roller-coaster-uece-ppc
+
+# teste para um carro
+java -jar out/artifacts/roller_coaster_uece_ppc_jar/roller-coaster-uece-ppc.jar configs/config01.txt
+
+# teste para dois carros
+java -jar out/artifacts/roller_coaster_uece_ppc_jar/roller-coaster-uece-ppc.jar configs/config02.txt
+
+# teste para três carros
+java -jar out/artifacts/roller_coaster_uece_ppc_jar/roller-coaster-uece-ppc.jar configs/config03.txt
+```
+
+Os testes foram separados em 3 configurações:
+
+- N:  52, M: 1, C: 4, TE: 1, TM: 10, TP_MIN: 1 e TP_MAX: 3
+- N:  92, M: 2, C: 4, TE: 1, TM: 10, TP_MIN: 1 e TP_MAX: 3
+- N: 148, M: 3, C: 4, TE: 1, TM: 10, TP_MIN: 1 e TP_MAX: 3
+
+Onde:
+
+- **N:** Número de passageiros
+- **M:** Número de carros
+- **C:** Número bancos em um carro
+- **TE:** Tempo de embarque e desembarque em um carro em segundos 
+- **TM:** Tempo que um carro leva para dar uma volta em segundos
+- **TP_MIN:** Tempo mínimo de chegada dos passageiros à montanha russa em segundos
+- **TP_MAX:** Tempo máximo de chegada dos passageiros à montanha russa em segundos
+
 ## Resultados
 
 Um dos requisitos é que no final da execução do código deverão ser calculados:

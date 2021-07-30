@@ -74,7 +74,7 @@ No final da nossa implementação são apresentados as seguintes informações:
 - Tempo Utilização do(s) carro(s): 0.7969568975558321
 - Tempo Utilização do(s) carro(s): 0.7969568975558321
 
-### `Um carro :car:`
+### Um carro :car:
 
 ```shell
 =============== Relatório ===============
@@ -88,7 +88,7 @@ Tempo utilização do(s) carro(s): 0.7969568975558321
 ============== Fim Relaório ==============
 ```
 
-### `Dois carros :car: :car:`
+### Dois carros :car: :car:
 
 ```shell
 =============== Relatório ===============
@@ -103,7 +103,7 @@ Tempo utilização do(s) carro(s): 0.8842303552206674
 ============== Fim Relaório ==============
 ```
 
-### `Três carros :car: :car: :car:`
+### Três carros :car: :car: :car:
 
 ```shell
 =============== Relatório ===============
